@@ -1,23 +1,41 @@
 import React from "react";
 
-function Box({ width, height, backgroundColor, remove }) {
-  function handleRemove(evt) {
-    remove(evt.target.id);
-  }
+/** Box.
+ *
+ * Properties:
+ *
+ * - id: unique id of each box
+ * - width: width of box
+ * - height: height of box
+ * - backgroundColor: color of the box
+ * - remove: function to remove box
+ *
+ * BoxList -> Box
+ *
+ **/
 
-  return (
-    <div className="Box">
-      <div className="Box-box" style={{
-        height: height,
-        width: width,
-        backgroundColor: backgroundColor
-      }}
-      />
-      <button className="BoxRemove" onClick={handleRemove}>
-        Remove The Box!
-      </button>
-    </div>
-  );
+
+
+function Box({ id, width, height, backgroundColor, remove }) {
+
+    // remove a box
+    function handleRemove() {
+        remove(id);
+    }
+    
+    return (
+        <div className="Box">
+            <div className="Box-box" style={{
+                height: `${height}px`,
+                width: `${width}px`,
+                backgroundColor: backgroundColor
+            }}
+            />
+            <button className="BoxRemove" onClick={handleRemove}>
+                Remove The Box!
+            </button>
+        </div>
+    );
 
 }
 

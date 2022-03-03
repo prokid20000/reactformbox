@@ -1,5 +1,20 @@
 import React, { useState } from 'react';
 
+/** Form to add new box.
+ *
+ * Properties:
+ *
+ * - addBox: function
+ * 
+ * 
+ * State:
+ * 
+ * formData: {height, width, backgroundColor}
+ *
+ * BoxList -> NewBoxForm
+ *
+ **/
+
 function NewBoxForm({ addBox }) {
   const [formData, setFormData] = useState({
     height: "",
@@ -13,6 +28,7 @@ function NewBoxForm({ addBox }) {
     setFormData(formData => ({ ...formData, [name]: value }));
   }
 
+  /**  Submit form and then clear out inputs*/
   function handleSubmit(evt) {
     evt.preventDefault();
     addBox(formData);
@@ -25,17 +41,17 @@ function NewBoxForm({ addBox }) {
 
   return (<div>
     <form onSubmit={handleSubmit}>
-      <label for="height-input">Height:</label>
+      <label htmlFor="height-input">Height:</label>
       <input id="height-input"
         name="height"
         value={formData.height}
         onChange={handleChange} />
-      <label for="width-input">Width:</label>
+      <label htmlFor="width-input">Width:</label>
       <input id="width-input"
         name="width"
         value={formData.width}
         onChange={handleChange} />
-      <label for="background-color-input">Background Color:</label>
+      <label htmlFor="background-color-input">Background Color:</label>
       <input id="background-color-input"
         name="backgroundColor"
         value={formData.backgroundColor}
