@@ -9,11 +9,9 @@ function BoxList() {
   const [boxes, setBoxes] = useState([]);
 
 
-  // function handleRemove
-  function handleRemove(evt) {
-    const target = evt.target;
-
-    setBoxes(boxes => boxes.filter(box => box.id != target.id));
+  // function remove
+  function remove(id) {
+    setBoxes(boxes => boxes.filter(box => box.id !== id));
   }
 
   // function addBox
@@ -27,11 +25,11 @@ function BoxList() {
     <div className="BoxList">
       <NewBoxForm addBox={addBox} />
       {
-        boxes.map(box => <Box id={box.id}
+        boxes.map(box => <Box key={box.id}
           width={box.width}
           height={box.height}
           backgroundColor={box.backgroundColor}
-          handleRemove={handleRemove} />)
+          remove={remove} />)
       }
     </div>
 

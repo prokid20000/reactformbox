@@ -1,10 +1,13 @@
 import React from "react";
 
-function Box({ id, width, height, backgroundColor, handleRemove }) {
+function Box({ width, height, backgroundColor, remove }) {
+  function handleRemove(evt) {
+    remove(evt.target.id);
+  }
 
   return (
     <div className="Box">
-      <div style={{
+      <div className="Box-box" style={{
         height: height,
         width: width,
         backgroundColor: backgroundColor
